@@ -40,12 +40,15 @@ Pós-processamento: suavização 3×3, fechamento morfológico (20 m) e área m�
 
    | Variável | O que é | Arquivo neste repositório |
    |---|---|---|
-   | `rgi_cg, rgi_uba, rgi_udi, rgi_ara, rgi_sjp, rgi_rp` | limites das 6 RGIs (IBGE, 2017) | `dados/rgis.geojson` |
+   | `rgi_cg, rgi_uba, rgi_udi, rgi_ara, rgi_sjp, rgi_rp` | limites das 6 RGIs (IBGE, 2017) | `dados/rgis_shapefile.zip` (ou `dados/rgis.geojson`) |
    | `grupo_1` … `grupo_4` | seringais de calibração (4 grupos de 4) | `dados/calibracao/pontos_calibracao.csv` |
    | `pivo, cana, pasto, eucalipto, mata` | demais coberturas (5 pontos cada) | `dados/calibracao/pontos_calibracao.csv` |
 
-   Para recriá-los: no GEE, **Assets → NEW → Table upload**, envie os dois arquivos
-   (no CSV, indique `lon`/`lat` como colunas de coordenadas) e cole no topo dos scripts:
+   Para recriá-los, no GEE, em **Assets → NEW**:
+   - **Shape files** → envie `rgis_shapefile.zip` (o GEE não aceita GeoJSON por esse botão) → nome do asset: `rgis`;
+   - **CSV file** → envie `pontos_calibracao.csv`; em *Advanced options*, indique `lon` como coluna X e `lat` como coluna Y → nome do asset: `pontos_calibracao`.
+
+   Depois, cole no topo de cada script, no lugar dos *Imports*:
 
    ```javascript
    var R = ee.FeatureCollection('projects/SEU-PROJETO/assets/rgis');
