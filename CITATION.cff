@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Se usar estes scripts ou dados, cite o trabalho abaixo."
+title: "Detecção automática de seringais com Sentinel-2 no Google Earth Engine"
+type: software
+authors:
+  - family-names: "Oliveira"
+    given-names: "Guilherme Araújo de"
+    affiliation: "Instituto Federal de São Paulo (IFSP), campus Barretos"
+license: MIT
+version: "1.0.0"
+date-released: "2026-12-01"
+repository-code: "https://github.com/guilherme-oliveira-agro/seringais-sentinel2-gee"
