@@ -31,14 +31,33 @@ Pós-processamento: suavização 3×3, fechamento morfológico (20 m) e área m�
 | 5 | `validacao_gabarito_v1.js` | – | cruza os rótulos da interpretação com o mapa |
 | 6 | `metricas_pontos_validacao.js` | – | extrai as métricas em cada ponto de validação |
 | 7 | `validacao_mapbiomas_v1.js` | E | teste da máscara do MapBiomas (pontos e áreas) |
-| – | `exportar_pontos_calibracao.js` | – | exporta as coordenadas dos pontos de calibração |
+| – | `exportar_imports.js` | – | exporta as RGIs e os pontos de calibração (*Imports*) para arquivos |
 
 ## Antes de rodar
 
-1. **Imports**: os scripts usam variáveis importadas no Code Editor, que não aparecem no código:
-   `rgi_cg, rgi_uba, rgi_udi, rgi_ara, rgi_sjp, rgi_rp` (limites das Regiões Geográficas Intermediárias, IBGE 2017) e, no script 1,
-   `grupo_1`…`grupo_4`, `pivo, cana, pasto, eucalipto, mata` (pontos de calibração).
-   Suba esses arquivos como *Assets* (tabelas) e importe-os com esses nomes.
+1. **Imports**: os scripts usam variáveis que, no projeto original, vinham da área de *Imports*
+   do Code Editor e por isso não aparecem no código:
+
+   | Variável | O que é | Arquivo neste repositório |
+   |---|---|---|
+   | `rgi_cg, rgi_uba, rgi_udi, rgi_ara, rgi_sjp, rgi_rp` | limites das 6 RGIs (IBGE, 2017) | `dados/rgis.geojson` |
+   | `grupo_1` … `grupo_4` | seringais de calibração (4 grupos de 4) | `dados/calibracao/pontos_calibracao.csv` |
+   | `pivo, cana, pasto, eucalipto, mata` | demais coberturas (5 pontos cada) | `dados/calibracao/pontos_calibracao.csv` |
+
+   Para recriá-los: no GEE, **Assets → NEW → Table upload**, envie os dois arquivos
+   (no CSV, indique `lon`/`lat` como colunas de coordenadas) e cole no topo dos scripts:
+
+   ```javascript
+   var R = ee.FeatureCollection('projects/SEU-PROJETO/assets/rgis');
+   var P = ee.FeatureCollection('projects/SEU-PROJETO/assets/pontos_calibracao');
+   function rg(v){ return R.filter(ee.Filter.eq('variavel', v)); }
+   function pt(v){ return P.filter(ee.Filter.eq('variavel', v)); }
+   var rgi_cg = rg('rgi_cg'), rgi_uba = rg('rgi_uba'), rgi_udi = rg('rgi_udi'),
+       rgi_ara = rg('rgi_ara'), rgi_sjp = rg('rgi_sjp'), rgi_rp = rg('rgi_rp');
+   var grupo_1 = pt('grupo_1'), grupo_2 = pt('grupo_2'), grupo_3 = pt('grupo_3'),
+       grupo_4 = pt('grupo_4'), pivo = pt('pivo'), cana = pt('cana'),
+       pasto = pt('pasto'), eucalipto = pt('eucalipto'), mata = pt('mata');
+   ```
 2. **Pasta de assets**: troque `PASTA_ASSET` pela sua pasta (`projects/SEU-PROJETO/assets/`).
 3. Rode a Etapa A (tarefas na aba *Tasks*) e só depois a Etapa B.
 

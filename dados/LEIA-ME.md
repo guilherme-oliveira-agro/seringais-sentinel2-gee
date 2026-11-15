@@ -1,5 +1,9 @@
 # Dados
 
+## `rgis.geojson`
+
+Limites das 6 Regiões Geográficas Intermediárias (IBGE, 2017), com as colunas `RGI`, `codigo` e `variavel` (nome usado nos scripts).
+
 ## `calibracao/` — 41 pontos (16 seringais + 5 de cada outra cobertura)
 
 | Arquivo | Conteúdo |
@@ -7,7 +11,7 @@
 | `metricas_pontos_calibracao_2024.csv` / `_2025.csv` | métricas fenológicas de cada ponto: NDVI e NDMI mínimo, máximo (com as datas) e amplitude, e NDVI na chuva |
 | `series_decendiais_2024.csv` / `_2025.csv` | série de NDVI e NDMI por decêndio de cada ponto (vazio = sem imagem limpa) |
 | `espectro_medio_julho_2024.csv` / `_2025.csv` | refletância média de cada cobertura, por banda, de 15 a 31 de julho |
-| `pontos_calibracao_coordenadas.csv` | coordenadas dos pontos (gerado com `scripts/exportar_pontos_calibracao.js`) |
+| `pontos_calibracao.csv` | coordenadas e grupo de cada ponto (`grupo_1`…`grupo_4`, `pivo`, `cana`, `pasto`, `eucalipto`, `mata`) |
 
 ## `validacao/` — 200 pontos do sorteio estratificado (semente 2025)
 
