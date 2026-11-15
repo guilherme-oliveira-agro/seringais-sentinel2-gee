@@ -29,6 +29,7 @@ Pós-processamento: suavização 3×3, fechamento morfológico (20 m) e área m�
 | 3 | `deteccao_v2_3_etapaB_mapa.js` | C | Etapa B: aplica regras + máscara e gera o mapa |
 | 4 | `validacao_sorteio_v2.js` | D | sorteio estratificado dos 200 pontos de validação |
 | 5 | `validacao_gabarito_v1.js` | – | cruza os rótulos da interpretação com o mapa |
+| 5b | `planilhas/calculo_acuracia_area.xlsx` | – | calcula UA, PA, OA, F1 e a área estimada com IC (Olofsson et al., 2014), sem programar |
 | 6 | `metricas_pontos_validacao.js` | – | extrai as métricas em cada ponto de validação |
 | 7 | `validacao_mapbiomas_v1.js` | E | teste da máscara do MapBiomas (pontos e áreas) |
 | – | `exportar_imports.js` | – | exporta as RGIs e os pontos de calibração (*Imports*) para arquivos |
