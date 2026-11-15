@@ -1,8 +1,8 @@
 # Dados
 
-## `rgis.geojson`
+## `rgis_shapefile.zip` e `rgis.geojson`
 
-Limites das 6 Regiões Geográficas Intermediárias (IBGE, 2017), com as colunas `RGI`, `codigo` e `variavel` (nome usado nos scripts).
+O mesmo conteúdo em dois formatos (o shapefile é o que o GEE aceita no upload). Limites das 6 Regiões Geográficas Intermediárias (IBGE, 2017), com as colunas `RGI`, `codigo` e `variavel` (nome usado nos scripts).
 
 ## `calibracao/` — 41 pontos (16 seringais + 5 de cada outra cobertura)
 
